@@ -36,7 +36,7 @@ public:
 		--*this;
 		return ret;
 	}
-	T operator* () const
+	T& operator* () const
 	{
 		if (curr == end)
 			throw std::out_of_range("out of range");
