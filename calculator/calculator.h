@@ -2,9 +2,7 @@
 #define _CALCULATOR_H_
 #include <memory>
 
-class BinaryNode;
-class AddNode;
-class MultiplyNode;
+//the "calculator" is just for doing some "Object-Oriented-Programming" exercises.
 
 class Node
 {
