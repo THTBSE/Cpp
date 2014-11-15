@@ -59,7 +59,7 @@ public:
 people& people::operator+= (const people& rhs)
 {
 	if (Name() != rhs.Name())
-		throw name_mismatch("wrong people", Name(), rhs.Name());
+		throw name_mismatch("wrong people!", Name(), rhs.Name());
 	money += rhs.money;
 	return *this;
 }
