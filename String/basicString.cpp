@@ -81,12 +81,14 @@ Date::Date(const string& date)
 	else
 	{
 		string number("0123456789");
-		string::size_type pos = 0;
-		day = std::stoi(date.substr(pos = date.find_first_of(number),
-			pos = date.find_first_not_of(number, pos) - pos));
-		month = std::stoi(date.substr(pos = date.find_first_of(number),
+		string::size_type pos = 0, end_pos = 0;
+		pos = date.find_first_of(number);
+		end_pos = date.find_first_not_of(number, pos);
+		day = std::stoi(date.substr(pos,end_pos - pos));
+		pos = end_pos;
+		month = std::stoi(date.substr(pos = date.find_first_of(number,pos),
 			date.find_first_not_of(number, pos) - pos));
-		year = std::stoi(date.substr(date.find_last_not_of(number)));
+		year = std::stoi(date.substr(date.find_last_not_of(number)+1));
 	}
 }
 
@@ -120,5 +122,5 @@ void Date::engVersion(const string& date)
 	string number("0123456789");
 	day = std::stoi(date.substr(pos = date.find_first_of(number), 
 		date.find_first_not_of(number, pos) - pos));
-	year = std::stoi(date.substr(date.find_last_not_of(number)));
+	year = std::stoi(date.substr(date.find_last_not_of(number)+1));
 }
