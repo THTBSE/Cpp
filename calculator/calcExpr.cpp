@@ -35,6 +35,7 @@ std::istream& CalcExpr::getExpr(std::istream& is)
 	{
 		try
 		{
+			infixExpr = preprocess(infixExpr);
 			check(infixExpr);
 			break;
 		}
@@ -51,7 +52,6 @@ std::istream& CalcExpr::getExpr(std::istream& is)
 			std::cout << msg.what() << std::endl;
 		}
 	}
-	infixExpr = preprocess(infixExpr);
 	infix = getSmartInfix(infixExpr);
 	return is;
 }
@@ -112,11 +112,12 @@ int CalcExpr::assistCheck(const std::string& str)
 		return INVALIDP;
 }
 
-//str is certainly not empty 
 //handle the situation such as '-3+2 or 3+(-2)' 
 //and remove trivial space character ' '
 std::string CalcExpr::preprocess(const std::string& str)
 {
+	if (str.empty())
+		throw emptyInput("Empty!The input is invalid!");
 	std::string ret;
 	char plus('+'), minus('-'), leftP('('), zero('0');
 	if (str[0] == plus || str[0] == minus)
