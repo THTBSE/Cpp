@@ -46,14 +46,14 @@ void extractSth::writeResults()
 	os.open("reults.txt");
 	for (const auto& s : results)
 	{
-		os << s << "\n";
+		os << s << " ";
 	}
 	os.close();
 }
 void extractSth::stateGraph(const string& str, string::size_type& ix)
 {
 	int state = 0;
-	string ret;
+	string ret("Gte");
 	bool endFlag = false;
 	for (string::size_type ie = ix; ie != str.size(); ++ie)
 	{
